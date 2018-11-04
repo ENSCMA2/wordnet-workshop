@@ -21,8 +21,17 @@ def lesk(context_sentence, ambiguous_word):
 
         lesk_dictionary += ss.definition().split()
 
-        lesk_dictionary += ss.lemma_names()   
-
+        lesk_dictionary += ss.lemma_names()  
+        for hyponym in ss.hyponyms():
+        	lesk_dictionary += hyponym.lemma_names() 
+        for hypernym in ss.hypernyms():
+        	lesk_dictionary += hypernym.lemma_names() 
+        for meronym in ss.part_meronyms():
+        	lesk_dictionary += meronym.lemma_names() 
+        for meronym in ss.substance_meronyms():
+        	lesk_dictionary += meronym.lemma_names() 
+        for holonym in ss.member_holonyms():
+        	lesk_dictionary += holonym.lemma_names() 
         lesk_dictionary = [ps.stem(i) for i in lesk_dictionary]
         context_sentence = [ps.stem(i) for i in context_sentence] 
 
