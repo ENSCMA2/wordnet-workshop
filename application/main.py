@@ -19,9 +19,8 @@ def lesk(context_sentence, ambiguous_word):
 
         lesk_dictionary = []
 
-        # Includes definition.
         lesk_dictionary += ss.definition().split()
-        # Includes lemma_names.
+
         lesk_dictionary += ss.lemma_names()   
 
         lesk_dictionary = [ps.stem(i) for i in lesk_dictionary]
@@ -34,19 +33,19 @@ def lesk(context_sentence, ambiguous_word):
             max_overlaps = len(overlaps)
     return lesk_sense
 
-print ("Context:", bank_sents[0])
+print("Context:", bank_sents[0])
 answer = (lesk(bank_sents[0],'bank'))
-print ("Sense:", answer)
-print ("Definition:",answer.definition())
+print("Sense:", answer)
+print("Definition:",answer.definition())
 print('\n')
 
-print ("Context:", bank_sents[1])
+print("Context:", bank_sents[1])
 answer = lesk(bank_sents[1],'bank')
-print ("Sense:", answer)
-print ("Definition:",answer.definition())
+print("Sense:", answer)
+print("Definition:",answer.definition())
 print('\n')
 
-print ("Context:", plant_sents[0])
+print("Context:", plant_sents[0])
 answer = lesk(plant_sents[0],'plant')
-print ("Sense:", answer)
-print ("Definition:",answer.definition())
+print("Sense:", answer)
+print("Definition:",answer.definition())
